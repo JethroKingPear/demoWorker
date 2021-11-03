@@ -2,7 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <button @click="postMessage">Run</button>
-
+    <br />
     <prism-editor
       class="my-editor height-300"
       v-model="code"
@@ -10,7 +10,7 @@
       :line-numbers="lineNumbers"
     ></prism-editor>
     <br />
-    <textarea v-model="resultAPI"></textarea>
+    <textarea class="myResponse" v-model="resultAPI"></textarea>
   </div>
 </template>
 
@@ -70,6 +70,11 @@ return rs1.validate`,
   line-height: 1.5;
   padding: 5px;
   width: 500px;
+}
+
+.myResponse{
+  height: 300px;
+  width: 300px;
 }
 
 .prism-editor__textarea:focus {
