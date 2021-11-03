@@ -2,18 +2,20 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <button @click="postMessage">Run</button>
+
     <prism-editor
-      class="my-editor height-300 "
+      class="my-editor height-300"
       v-model="code"
       :highlight="highlighter"
       :line-numbers="lineNumbers"
     ></prism-editor>
+    <br />
+    <textarea v-model="resultAPI"></textarea>
   </div>
 </template>
 
 <script>
-import { sendMessage } from "./worker-api.js";
-
+import { excuteScript } from "./apis.js";
 import { PrismEditor } from "vue-prism-editor";
 import "vue-prism-editor/dist/prismeditor.min.css"; // import the styles somewhere
 
@@ -30,13 +32,17 @@ export default {
   },
   data() {
     return {
-      code: 'console.log("Hello World")',
+      code: `const rs1 = getValidUsers();
+const rs2 = getPositions();
+return rs1.validate`,
       lineNumbers: true,
+      resultAPI: "",
     };
   },
   methods: {
     postMessage() {
-      sendMessage(this.code);
+      const result = excuteScript(this.code);
+      this.resultAPI = JSON.stringify(result);
     },
     highlighter(code) {
       return highlight(code, languages.js); //returns html
