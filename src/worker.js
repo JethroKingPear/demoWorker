@@ -3,6 +3,7 @@ self.addEventListener('message', (e) => {
   const code = `
   ${sum.toString()};
   ${getValidUsers.toString()};
+  ${getPositions.toString()};
   ${deduct.toString()};
   console.log('object');
     ${e.data}
@@ -18,4 +19,16 @@ const getValidUsers = () => {
     _code: 200,
     _message: 'Success',
   };
+};
+const getPositions = (params) => {
+  switch (params) {
+    case 1:
+      return 1;
+    case 2:
+      return 2;
+    case 3:
+      return 3;
+    default:
+      break;
+  }
 };
