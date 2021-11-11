@@ -4,6 +4,7 @@ function excuteScript(e) {
         ${getValidUsers.toString()};
         ${getPositions.toString()};
         ${deduct.toString()};
+        ${getResponsibilities.toString()};
           ${e}
         `;
   let F = new Function(code);
@@ -12,6 +13,7 @@ function excuteScript(e) {
 const sum = (a, b) => a + b;
 const deduct = (c, b) => c - b;
 const getValidUsers = () => {
+  // call API getValidUsers with param
   return {
     response: {
       _code: 200,
@@ -54,5 +56,18 @@ const getPositions = () => {
     },
   };
 };
+
+const getResponsibilities = (param) => {
+  return {
+    response: {
+      size: param.pageSize,
+      number: param.pageNumber,
+      contents: [],
+    },
+    validate: true,
+    errorMessage: {},
+  }
+}
+
 
 export { excuteScript };
