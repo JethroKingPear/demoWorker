@@ -25,11 +25,16 @@ const getValidUsers = () => {
       number_of_elements: 500,
       is_last: false,
       is_first: false,
+      contents: [
+        {
+          name: 'ted',
+          email: 'abc@cyberlogitec.com',
+          postion_code: 3,
+        },
+      ],
     },
     validate: false,
-    errorMessage: {
-      contents: 'contents must not empty',
-    },
+    errorMessage: {},
   };
 };
 const getPositions = () => {
@@ -44,15 +49,20 @@ const getPositions = () => {
       is_first: false,
       contents: [
         {
-          code: '1',
+          code: 1,
           level: 1,
+          name: '부장',
+        },
+        {
+          code: 2,
+          level: 2,
           name: '부장',
         },
       ],
     },
     validate: true,
     errorMessage: {
-        _code: '_code must be 200',
+      _code: '_code must be 200',
     },
   };
 };
@@ -66,8 +76,7 @@ const getResponsibilities = (param) => {
     },
     validate: true,
     errorMessage: {},
-  }
-}
-
+  };
+};
 
 export { excuteScript };
